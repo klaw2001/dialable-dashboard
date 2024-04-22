@@ -36,7 +36,7 @@ import { useApi } from "context/MyContext";
 import Loader from "components/Loader";
 
 function RegularTables() {
-  const { getAllUsers, users } = useApi();
+  const { getAllUsers, users , loading} = useApi();
   useEffect(() => {
     getAllUsers();
   }, []);
@@ -52,7 +52,12 @@ function RegularTables() {
               <CardHeader>
                 <CardTitle tag="h4">Users List</CardTitle>
               </CardHeader>
+              {loading ? (
+                <Loader/>
+              ):(
+
               <CardBody>
+
                 <Table responsive>
                   <thead className="text-primary">
                     <tr>
@@ -114,6 +119,7 @@ function RegularTables() {
                   </tbody>
                 </Table>
               </CardBody>
+              )}
             </Card>
           </Col>
           {/* <Col xs={12}>
